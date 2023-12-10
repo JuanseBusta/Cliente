@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-
+import{HttpClientModule} from '@angular/common/http';
 //Componentes
 import { AppComponent } from './app.component';
 import { CrearSolicitudComponent } from './components/crear-solicitud/crear-solicitud.component';
@@ -22,7 +22,8 @@ import { ListarSolicitudesComponent } from './components/listar-solicitudes/list
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

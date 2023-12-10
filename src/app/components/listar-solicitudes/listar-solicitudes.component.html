@@ -3,9 +3,9 @@
         <div class="col-lg-8 offset-lg-2">
             <div class="card">
                 <div class="card-body text-center">
-                    <span class="titulo">LISTADO DE SOLICITUDES</span>
+                    <span class="titulo">{{titulo | uppercase}}</span>
                     <button class="btn btn-success float-end" routerLink="/crear-solicitud">NUEVO</button>
-                    <table class="table table-striped mt-3">
+                    <table *ngIf="listSolicitudes.length>0" class="table table-striped mt-3">
                         <thead>
                           <tr>
                             <th scope="col">Nombre</th>
@@ -17,30 +17,20 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>Juan</td>
-                            <td>piolo@gmail.com</td>
-                            <td>3208</td>
-                            <td>Suspensión</td>
-                            <td>Lorem</td>
+                          <tr *ngFor="let solicitud of listSolicitudes">
+                            <td>{{solicitud.nombre}}</td>
+                            <td>{{solicitud.correo}}</td>
+                            <td>{{solicitud.telefono}}</td>
+                            <td>{{solicitud.tema}}</td>
+                            <td>{{solicitud.detalle}}</td>
                             <td>
-                                <i class="fas fa-edit text-primary"></i>
-                                <i class="fas fa-trash text-danger"></i>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Jacob</td>
-                            <td>jacob@gmail.com</td>
-                            <td>3568</td>
-                            <td>Adquisición</td>
-                            <td>Lorem</td>
-                            <td> 
-                                <i class="fas fa-edit text-primary"></i> 
-                                <i class="fas fa-trash text-danger"></i>
+                                <i [routerLink]="['/editar-solicitud',solicitud._id]" class="fas fa-edit text-primary"></i>
+                                <i (click)="eliminarSolicitud(solicitud._id)" class="fas fa-trash text-danger"></i>
                             </td>
                           </tr>
                         </tbody>
                       </table>
+                      <h5 style="text-align: start; margin-top: 10px;" *ngIf="listSolicitudes.length==0">No hay productos para mostrar</h5>
                 </div>
             </div>
         </div>
